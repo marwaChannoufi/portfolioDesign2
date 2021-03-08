@@ -5,7 +5,7 @@
     --header-height:3rem;
     
     /* ******* Colors ********** */
-    --first-color:red;
+    --first-color:rgb(180, 57, 57);
     --first-color-dark:rgb(99, 13, 13);
     --text-color:rgb(110, 106, 106);
     --first-color-light:gray;
@@ -38,7 +38,6 @@
     --z-normal:1;
     --z-tooltip:10;
     --z-fixed:100;
-
 }
 
 @media screen and (min-width:768px){
@@ -54,6 +53,7 @@
 }
 
 /* ******* BASE ********** */
+
 *,::before,::after{
     box-sizing: border-box;
 }
@@ -94,10 +94,11 @@ img{
     height: auto;
     display: block;
 }
+
 /* ******* CLASS CSS ********** */
+
 .section{
     padding:4rem 0 2rem;
-
 }
 
 .section-title, .section-subtitle{
@@ -108,7 +109,6 @@ img{
     font-size: var(--h1-font-size);
     color: var(--first-color);
     margin-bottom: var(--mb-3);
-
 }
 
 .section-subtitle{
@@ -122,8 +122,9 @@ img{
 .bd-container{
     max-width: 1024px;
     width: calc(100% - 2rem);
-    margin-left: var(--mb-2);
-    margin-right: var(--mb-2);
+    /* margin-left: var(--mb-2);
+    margin-right: var(--mb-2); */
+    margin: auto;
 }
 
 .bd-grid{
@@ -141,6 +142,7 @@ img{
 }
 
 /* ******* NAV  ********** */
+
 .nav{
     height: var(--header-height);
     display: flex;
@@ -151,7 +153,7 @@ img{
 @media screen and (max-width:768px){
     .nav__menu{
         position: fixed;
-        top: -100px;
+        top:  -100%;
         left: 0;
         width: 100%;
         padding-top: 1.5rem;
@@ -160,7 +162,6 @@ img{
         transition: 0.4s;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         border-radius: 0 0 1rem 1rem;
-
     }
 }
 
@@ -171,7 +172,6 @@ img{
 .nav__link{
     color: var(--first-color-lighten);
     transition: .3s;
-
 }
 
 .nav__link:hover{
@@ -186,28 +186,168 @@ img{
     font-size: 1.3rem;
     cursor: pointer;
 }
+
+/* Show menu */
+
 .show-menu{
     top: var(--header-height);
 }
-/* Show menu */
 
 /* Active menu */
 
+.active-link{
+    position: relative;
+}
+
+.active-link::after{
+     content: '';
+     position: absolute;
+     bottom: -.7rem;
+     left: 0;
+     width: 65%;
+     height:3px;
+     background-color: var(--first-color-dark);
+}
+
 /* Change background header */
 
+.scroll-header{
+    background-color: var(--first-color-lighten);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
+.scroll-header .nav__logo,
+.scroll-header .nav__toggle,
+.scroll-header .nav__link{
+    color: var(--first-color-dark);
+}
+
+.scroll-header .nav__menu{
+    background-color:var(--first-color-lighten) ;
+}
 
 /* ******* SCROLL TOP ********** */
 
-/* Showscroll top */
+.scrolltop{
+    position: fixed;
+    right: 1rem;
+    bottom: -20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem;
+    background: rgba(123, 111, 113, 0.7);
+    border-radius: .5rem;
+    z-index: var(--z-tooltip);
+    transition: .4s;
+}
 
+.scrolltop:hover{
+    background-color: var(--first-color);
+}
 
+.scrlltop__icon{
+    font-size: 2rem;
+    color: var(--first-color-lighten);
+}
 
+/* Show scroll top */
 
+.show-scroll{
+    visibility: visible;
+    bottom: 1.5rem;
 
+}
 
-/* ******* VARIABLES CSS ********** */
-/* ******* VARIABLES CSS ********** */
-/* ******* VARIABLES CSS ********** */
-/* ******* VARIABLES CSS ********** */
+/* ******* HOME ********** */
+
+.home{
+    background-color: rgb(0, 0, 0);
+    overflow: hidden;
+
+}
+
+.home__container{
+    position: relative;
+    height: calc(100vh - var(--header-height));
+    grid-template-rows: repeat(2, max-content);
+    align-content: space-around;
+    row-gap: 2rem;
+}
+
+.home__data{
+    border-left: 4px solid var(--first-color-lighten);
+    color: var(--first-color-lighten);
+    padding-left: 1.5rem;
+    z-index: var(--z-tooltip);
+}
+
+.home__name{
+    font-size: var(--biggest-font-size);
+}
+.home__greeting, .home__profession{
+    display: block;
+    font-weight: var(--font-bold);
+}
+
+.home__greeting{
+    font-size: .813rem;
+
+}
+.home__profession{
+    font-size: .938rem;
+    margin-bottom: var(--mb-3);
+
+}
+.home__img{
+    position: absolute;
+    right: 0;
+    bottom: 0; 
+    /* opacity: .2; */
+}
+.home__img img{
+    width: 240px; 
+}
+
+.home__social{
+    display: flex;
+    flex-direction: column;
+}
+
+.home__social-icon{
+    width: max-content;
+    font-size: 1.3rem;
+    margin-bottom: var(--mb-3);
+    color: var(--first-color-lighten);
+}
+.home__social-icon:hover{
+    color: var(--first-color-light);
+}
+/* Buttons */
+
+.button{
+    display: inline-block;
+    background-color: var(--first-color);
+    color: var(--first-color-lighten);
+    padding: .75rem 1rem;
+    border-radius: .25rem;
+    transition: .3s;
+}
+
+.button:hover{
+    background-color: var(--first-color-dark);
+}
+
+.button-light{
+   background-color: var(--first-color-light); 
+}
+/* ******* ABOUT ********** */
+
+/* ******* QUALIFICATION ********** */
+
+/* ******* SERVICES ********** */
+
+/* ******* PROJECT IN MIND ********** */
+
+/* ******* PORTFOLIO ********** */
 
